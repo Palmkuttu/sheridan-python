@@ -1,41 +1,44 @@
-
 import pytest
 
-def test_non_integer():
-  with pytest.raises(ValueError):
-    generate_prime_factors("abc")
+def generate_prime_factors(number: int) -> list[int]:
+    """Generates a list of prime factors for a given integer."""
+    if not isinstance(number, int):
+        raise ValueError("Input must be an integer")
 
-def test_one():
-    assert generate_prime_factors(1) == [1]
+    factors = []
+    divisor = 2
+    temp_number = number
+    while temp_number > 1:
+        while temp_number % divisor == 0:
+            factors.append(divisor)
+            temp_number //= divisor
+        divisor += 1
+    return factors
 
-def test_two():
+def test_input_non_integer():
+    with pytest.raises(ValueError):
+        generate_prime_factors("string")
+
+    with pytest.raises(ValueError):
+        generate_prime_factors(3.14)
+
+def test_input_1_returns_empty():
+    assert generate_prime_factors(1) == []
+
+def test_input_2_returns_2():
     assert generate_prime_factors(2) == [2]
 
-def test_three():
+def test_input_3_returns_3():
     assert generate_prime_factors(3) == [3]
-    assert generate_prime_factors(4) == [4]
 
-def test_four():
-    assert generate_prime_factors(4) == [4]
-    assert generate_prime_factors(5) == [5]
+def test_input_4_returns_2_2():
+    assert generate_prime_factors(4) == [2, 2]
 
-def test_five():
-    assert generate_prime_factors(5) == [5]
-    assert generate_prime_factors(6) == [6]
-    assert generate_prime_factors(7) == [7]
+def test_input_5_returns_2_3():
+    assert generate_prime_factors(6) == [2, 3]
 
-def test_six():
-  assert generate_prime_factors(6) == [6]
-  assert generate_prime_factors(7) == [7]
-  assert generate_prime_factors(8) == [8]
-  assert generate_prime_factors(9) == [9]
+def test_input_6_returns_2_2_2():
+    assert generate_prime_factors(8) == [2, 2, 2]
 
-def test_seven():
-  assert generate_prime_factors(7) == [7]
-  assert generate_prime_factors(8) == [8]
-  assert generate_prime_factors(9) == [9]
-
-def test_eight():
-  assert generate_prime_factors(8) == [8]
-  assert generate_prime_factors(9) == [9]
-  assert generate_prime_factors(10) == [10]
+def test_input_7_returns_3_3():
+    assert generate_prime_factors(9) == [3, 3]
