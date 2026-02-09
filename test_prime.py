@@ -1,3 +1,5 @@
+import pytest
+
 def test_input_non_integer():
     with pytest.raises(ValueError):
         generate_prime_factors("string")
