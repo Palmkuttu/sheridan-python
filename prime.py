@@ -1,4 +1,4 @@
-import pytest
+
 
 def generate_prime_factors(number: int) -> list[int]:
     """Generates a list of prime factors for a given integer."""
