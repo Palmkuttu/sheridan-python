@@ -1,4 +1,9 @@
+
 # Prime Factors (TDD Assignment)
+**Student Name:** Dennis Zacharia  
+**Course:** Sheridan Python Programming  
+**Assignment:** Prime Factors  
+**Date:** February 9, 2026
 
 ## Description
 This project implements a function that generates the **prime factors** of a given integer using **Test-Driven Development (TDD)**.
