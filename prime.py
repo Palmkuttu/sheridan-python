@@ -1,5 +1,4 @@
 
-
 def generate_prime_factors(number: int) -> list[int]:
     """Generates a list of prime factors for a given integer."""
     if not isinstance(number, int):
